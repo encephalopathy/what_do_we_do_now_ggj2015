@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
+	public float speed = 0.1f;
 
-
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	private void Start()
+	{
+		
 	}
 
-	public void MoveToLocation(Vector3 _direction){
+	private void Update()
+	{
+		
+	}
 
-		transform.Translate(_direction);
-
+	public void MoveToLocation(Vector3 _direction)
+	{
+		transform.Translate(_direction * speed);
 	}
 }

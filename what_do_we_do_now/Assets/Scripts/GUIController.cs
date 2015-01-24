@@ -1,22 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GUIController : MonoBehaviour {
-
+public class GUIController : MonoBehaviour
+{
 	public PlayerController playerC;
 
-	void Awake(){
+	public Transform playerTransform,mainCameraTransform;
 
-		playerC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+	private void Awake()
+	{
 	}
 
-	void Update(){
-
+	private void Update()
+	{
 		ButtonClickActions();
+
+		mainCameraTransform.position = new Vector3(playerTransform.position.x,mainCameraTransform.position.y,playerTransform.position.z - 10);
 	}
 
 
-	private void ButtonClickActions(){
+	private void ButtonClickActions()
+	{
 
 		Vector3 _direction = Vector3.zero;
 		
