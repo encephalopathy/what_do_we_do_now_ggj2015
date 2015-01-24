@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum DirectionalType { normal, reverseAll, changeCameraAngle}
+public enum DirectionalType { normal, reverseAll, changeCameraAngle, }
 
 public class Behavior_ChangesControlDirections : EnemyBehavior {
 
@@ -14,6 +14,9 @@ public class Behavior_ChangesControlDirections : EnemyBehavior {
 
 	private Vector3 original_playerVectorAngleFromCamera;
 	 
+	void OnEnable(){
+		RandomizeDirectionType();
+	}
 
 	protected override void Awake(){
 
@@ -36,6 +39,13 @@ public class Behavior_ChangesControlDirections : EnemyBehavior {
 		else if(directionType == DirectionalType.reverseAll)
 			player.directionModifer = -1f;
 
+
+
+	}
+
+	public void RandomizeDirectionType(){
+
+		directionType = (DirectionalType) Random.Range(0, System.Enum.GetValues(typeof(DirectionalType)).Length);
 
 
 	}
