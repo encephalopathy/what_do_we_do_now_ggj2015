@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class MountainGenerator : MonoBehaviour {
-	private const float WORLD_SIZE = 150;
+	private float WORLD_SIZE = 150;
 
 	public GameObject Mountain;
 	public GameObject Ground;
@@ -13,10 +13,11 @@ public class MountainGenerator : MonoBehaviour {
 	private IList<GameObject> mountains = new List<GameObject>(12);
 
 	private Vector2 startLocation;
+	private int worldOffset = 0;
 
 	// Use this for initialization
 	void Start () {
-		startLocation = new Vector2(-WORLD_SIZE / 2f, -WORLD_SIZE / 2f);
+
 		CreateTerrain();
 	}
 
@@ -26,42 +27,35 @@ public class MountainGenerator : MonoBehaviour {
 		}
 		mountains.Clear();
 
+		startLocation = new Vector2(Player.transform.position.x, Player.transform.position.z);
 		for (int t = 0; t < WORLD_SIZE; ++t) {
-			float i = (float)Random.Range(0,WORLD_SIZE);
+			float i = (float)Random.Range(0, WORLD_SIZE);
 			float j = (float)Random.Range(0, WORLD_SIZE);
-			GameObject gameObjectCreated = (GameObject)GameObject.Instantiate(Mountain, new Vector3(startLocation.x + i, 0f, startLocation.y + j), Quaternion.identity);
+			GameObject gameObjectCreated = (GameObject)GameObject.Instantiate(Mountain, new Vector3(i + startLocation.x - WORLD_SIZE / 2, Player.transform.position.y - 0.2f, j + startLocation.y - WORLD_SIZE / 2), Quaternion.identity);
 			gameObjectCreated.transform.Rotate(-90, 0, 0);
+			gameObjectCreated.transform.localScale = new Vector3(250, 250, 250);
 			mountains.Add(gameObjectCreated);
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		/*bool worldUpdate = false;
-		if (Player.transform.position.x < 0) {
-			startLocation.x -= WORLD_SIZE;
+		bool worldUpdate = false;
+
+		if (Mathf.Abs(startLocation.x - Player.transform.position.x) > WORLD_SIZE / 2) {
 			worldUpdate = true;
 		}
 
-		if (Player.transform.position.x > WORLD_SIZE) {
-			startLocation.x += WORLD_SIZE;
-			worldUpdate = true;
-		}
-
-		if (Player.transform.position.z > WORLD_SIZE) {
-			startLocation.y += WORLD_SIZE;
-			worldUpdate = true;
-		}
-
-		if (Player.transform.position.z > WORLD_SIZE) {
-			startLocation.y -= WORLD_SIZE;
+		if (Mathf.Abs(startLocation.y - Player.transform.position.z) > WORLD_SIZE / 2) {
 			worldUpdate = true;
 		}
 
 		if (worldUpdate) {
 			Debug.Log("Updating world");
+			WORLD_SIZE *= 2;
 			CreateTerrain();
-		}*/
+
+		}
 
 	}
 
