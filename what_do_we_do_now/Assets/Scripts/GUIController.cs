@@ -5,6 +5,8 @@ public class GUIController : MonoBehaviour {
 
 	public PlayerController playerC;
 
+	public Behavior_ChangesControlDirections changeDir;
+
 	void Awake(){
 
 		playerC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -13,6 +15,22 @@ public class GUIController : MonoBehaviour {
 	void Update(){
 
 		ButtonClickActions();
+
+
+		if(Input.GetKeyDown(KeyCode.R)){
+
+			Debug.Log("pressed R");
+			changeDir.ChangeRandomCameraAngle();
+
+		}
+
+		if(Input.GetKeyDown(KeyCode.E)){
+			
+			Debug.Log("pressed E");
+			changeDir.ChangeControlDirection();
+		}
+
+
 	}
 
 

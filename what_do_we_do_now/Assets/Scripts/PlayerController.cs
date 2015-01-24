@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	public float directionModifer = 1f;
 
 	void Start () {
 	
@@ -15,7 +16,8 @@ public class PlayerController : MonoBehaviour {
 
 	public void MoveToLocation(Vector3 _direction){
 
-		transform.Translate(_direction);
+		Vector3 _targetPos = _direction * directionModifer;
+		transform.Translate(_targetPos);
 
 	}
 }

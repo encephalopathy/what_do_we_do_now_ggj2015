@@ -13,7 +13,7 @@ public class EnemyFollow : EnemyBehavior
 
 	private void Update()
 	{
-		if(Vector3.Distance(myTransform.position,playerTransform.position) < 10)
-			Debug.Log("imma git you");
+		//if(Vector3.Distance(myTransform.position,playerTransform.position) < 10)
+			//Debug.Log("imma git you");
 	}
 }
