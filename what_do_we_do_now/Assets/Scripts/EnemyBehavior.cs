@@ -3,10 +3,16 @@ using System.Collections;
 
 public abstract class EnemyBehavior : MonoBehaviour
 {
-	public PlayerController player;
+	protected PlayerController player;
 
-	public Transform myTransform,
-	playerTransform;
+	protected Transform myTransform,playerTransform;
+
+	protected virtual void Awake()
+	{
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+		myTransform = GetComponent<Transform>();
+		playerTransform = player.transform;
+	}
 
 	protected virtual void Start()
 	{

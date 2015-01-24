@@ -17,10 +17,16 @@ public class MountainGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		startLocation = new Vector2(-WORLD_SIZE / 2f, -WORLD_SIZE / 2f);
+		CreateTerrain();
 	}
 
 	private void CreateTerrain() {
-		for (int t = 0; t < 100; ++t) {
+		for (int t = 0; t < mountains.Count; ++t) {
+			GameObject.Destroy(mountains[t]);
+		}
+		mountains.Clear();
+
+		for (int t = 0; t < WORLD_SIZE; ++t) {
 			float i = (float)Random.Range(0,WORLD_SIZE);
 			float j = (float)Random.Range(0, WORLD_SIZE);
 			GameObject gameObjectCreated = (GameObject)GameObject.Instantiate(Mountain, new Vector3(startLocation.x + i, 0f, startLocation.y + j), Quaternion.identity);
@@ -31,7 +37,7 @@ public class MountainGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		bool worldUpdate = false;
+		/*bool worldUpdate = false;
 		if (Player.transform.position.x < 0) {
 			startLocation.x -= WORLD_SIZE;
 			worldUpdate = true;
@@ -42,19 +48,20 @@ public class MountainGenerator : MonoBehaviour {
 			worldUpdate = true;
 		}
 
-		if (Player.transform.position.y > WORLD_SIZE) {
+		if (Player.transform.position.z > WORLD_SIZE) {
 			startLocation.y += WORLD_SIZE;
 			worldUpdate = true;
 		}
 
-		if (Player.transform.position.y > WORLD_SIZE) {
+		if (Player.transform.position.z > WORLD_SIZE) {
 			startLocation.y -= WORLD_SIZE;
 			worldUpdate = true;
 		}
 
 		if (worldUpdate) {
+			Debug.Log("Updating world");
 			CreateTerrain();
-		}
+		}*/
 
 	}
 
