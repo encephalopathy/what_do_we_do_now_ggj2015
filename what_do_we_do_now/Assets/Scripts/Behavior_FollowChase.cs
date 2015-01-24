@@ -6,7 +6,7 @@ public class Behavior_FollowChase : EnemyBehavior
 
 	public bool bChase;
 
-	public float speed;
+	public float speed = 5;
 
 	protected override void Start()
 	{
@@ -24,25 +24,20 @@ public class Behavior_FollowChase : EnemyBehavior
 		}
 	}
 
-	public void MoveToTarget(Vector3 _direction)
-	{
-		myTransform.Translate(_direction);
-	}
-
 	public void FollowTarget(Transform target)
 	{
 		if(Vector3.Distance(target.position,myTransform.position) >= 5f)
 		{
-			Vector3 moveToPos = new Vector3(target.position.x - myTransform.position.x,myTransform.position.y,target.position.z - myTransform.position.z);
+			Vector3 followPosition = Vector3.MoveTowards(myTransform.position,target.position,Time.deltaTime * speed);
 
-			MoveToTarget(moveToPos * speed);
+			myTransform.position = new Vector3(followPosition.x,myTransform.position.y,followPosition.z);
 		}
 	}
 
 	public void ChaseTarget(Transform target)
 	{
-		Vector3 moveToPos = (target.position - myTransform.position);
-		
-		MoveToTarget(moveToPos * speed);
+//		Vector3 moveToPos = (target.position - myTransform.position);
+//		
+//		MoveToTarget(moveToPos * speed);
 	}
 }
