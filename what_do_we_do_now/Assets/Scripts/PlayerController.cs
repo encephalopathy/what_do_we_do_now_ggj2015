@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-	public float directionModifer = 1f;
+	public float directionModifer = 1f,speed = 0.1f;
 
 	[System.NonSerialized] public bool bInvisible;
 
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
 	public void MoveToLocation(Vector3 _direction)
 	{
-		Vector3 _targetPos = _direction * directionModifer;
+		Vector3 _targetPos = _direction * directionModifer * speed;
 		transform.Translate(_targetPos);
 
 	}

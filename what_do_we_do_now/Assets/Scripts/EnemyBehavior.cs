@@ -5,12 +5,14 @@ public abstract class EnemyBehavior : MonoBehaviour
 {
 	public PlayerController player;
 
-	public Transform myTransform;
+	public Transform myTransform,playerTransform;
 
 
 	protected virtual void Awake(){
 
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+		myTransform = GetComponent<Transform>();
+		playerTransform = player.transform;
 	}
 
 	protected virtual void Start()
