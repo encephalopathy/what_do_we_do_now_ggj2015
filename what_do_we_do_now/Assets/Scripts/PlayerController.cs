@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
 	public float directionModifer = 1f,speed = 0.1f;
-
+	public bool isKnockedBack = false;
 	[System.NonSerialized] public bool bInvisible;
 
 	private void Start()
@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
 	public void MoveToLocation(Vector3 _direction)
 	{
+		if(isKnockedBack == true) return;
+
 		Vector3 _targetPos = _direction * directionModifer * speed;
 
 		transform.Translate(_targetPos);
