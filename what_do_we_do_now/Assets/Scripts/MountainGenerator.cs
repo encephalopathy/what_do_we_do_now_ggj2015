@@ -3,34 +3,59 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class MountainGenerator : MonoBehaviour {
-	public GameObject Mountain;
-	public GameObject plane;
+	private const float WORLD_SIZE = 150;
 
-	private Vector2 planeSize;
+	public GameObject Mountain;
+	public GameObject Ground;
+	public GameObject Player;
+
+	private Vector2 GroundSize;
 	private IList<GameObject> mountains = new List<GameObject>(12);
+
+	private Vector2 startLocation;
+
 	// Use this for initialization
 	void Start () {
-		Vector3 fullSize = plane.transform.renderer.bounds.size;
-		planeSize = new Vector2(fullSize.z, fullSize.x);
-		Debug.Log("Game world size: " + fullSize);
-		int delta = 10;
-		float stepSizeX = fullSize.x / delta;
-		float stepSizeY = fullSize.y / delta;
-		float interpolationFactor = 1f / delta;
-		for (float i = 0; i < 1; i += interpolationFactor) {
-			for (float j = 0; j < 1; j += interpolationFactor) {
-				float scaleFactor = Mathf.PerlinNoise(i, j);
-				//Debug.Log("Perlin Noise value: " + scaleFactor);
-				if (scaleFactor > 0.25f) {
-					GameObject gameObjectCreated = (GameObject)GameObject.Instantiate(Mountain, new Vector3((float)(stepSizeX * i * delta), 0f, (float)(stepSizeY * j * delta)), Quaternion.identity);
-					mountains.Add(gameObject);
-				}
-			}
+		startLocation = new Vector2(-WORLD_SIZE / 2f, -WORLD_SIZE / 2f);
+	}
+
+	private void CreateTerrain() {
+		for (int t = 0; t < 100; ++t) {
+			float i = (float)Random.Range(0,WORLD_SIZE);
+			float j = (float)Random.Range(0, WORLD_SIZE);
+			GameObject gameObjectCreated = (GameObject)GameObject.Instantiate(Mountain, new Vector3(startLocation.x + i, 0f, startLocation.y + j), Quaternion.identity);
+			gameObjectCreated.transform.Rotate(-90, 0, 0);
+			mountains.Add(gameObjectCreated);
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		bool worldUpdate = false;
+		if (Player.transform.position.x < 0) {
+			startLocation.x -= WORLD_SIZE;
+			worldUpdate = true;
+		}
+
+		if (Player.transform.position.x > WORLD_SIZE) {
+			startLocation.x += WORLD_SIZE;
+			worldUpdate = true;
+		}
+
+		if (Player.transform.position.y > WORLD_SIZE) {
+			startLocation.y += WORLD_SIZE;
+			worldUpdate = true;
+		}
+
+		if (Player.transform.position.y > WORLD_SIZE) {
+			startLocation.y -= WORLD_SIZE;
+			worldUpdate = true;
+		}
+
+		if (worldUpdate) {
+			CreateTerrain();
+		}
+
 	}
 
 
