@@ -58,7 +58,7 @@ public class Behavior_ChangesControlDirections : EnemyBehavior {
 			+ player.transform.position + new Vector3 (0, original_playerDistanceFromCamera_Height, 0);
 		
 		Camera.main.transform.position = _targetPos;
-		Camera.main.transform.LookAt(player.transform.position);
+		Camera.main.transform.LookAt(playerTransform.position);
 
 	}
 
