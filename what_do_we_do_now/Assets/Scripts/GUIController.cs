@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GUIController : MonoBehaviour {
-
+public class GUIController : MonoBehaviour
+{
 	public PlayerController playerC;
 
 	public Behavior_ChangesControlDirections changeDir;
+	public Transform playerTransform,mainCameraTransform;
 
-	void Awake(){
 
-		playerC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+	private void Awake()
+	{
 	}
 
-	void Update(){
-
+	private void Update()
+	{
 		ButtonClickActions();
 
 
+		mainCameraTransform.position = new Vector3(playerTransform.position.x,mainCameraTransform.position.y,playerTransform.position.z - 10);
 		if(Input.GetKeyDown(KeyCode.R)){
 
 			Debug.Log("pressed R");
@@ -34,7 +36,8 @@ public class GUIController : MonoBehaviour {
 	}
 
 
-	private void ButtonClickActions(){
+	private void ButtonClickActions()
+	{
 
 		Vector3 _direction = Vector3.zero;
 		
