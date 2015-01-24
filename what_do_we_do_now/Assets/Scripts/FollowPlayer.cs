@@ -1,23 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FollowPlayer : MonoBehaviour {
+public class Behavior_Follow : EnemyBehavior
+{
 
-	public bool isFollowTarget = false;
-	public Transform targetTrans;
+	public bool bChase;
+
 	public float speed;
 
-	void Awake(){
-
-
-
+	protected override void Start()
+	{
+		base.Start();
 	}
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
+
 	void Update () {
 	
 		if(isFollowTarget && targetTrans !=null ) FollowTarget (targetTrans);
