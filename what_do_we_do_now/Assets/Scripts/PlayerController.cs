@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
 	public void MoveToLocation(Vector3 _direction)
 	{
 		Vector3 _targetPos = _direction * directionModifer * speed;
-		transform.Translate(_targetPos);
 
+		transform.Translate(_targetPos);
 	}
 
 	public void ToggleInvisible()
