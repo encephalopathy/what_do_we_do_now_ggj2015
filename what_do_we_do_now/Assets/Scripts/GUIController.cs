@@ -5,7 +5,9 @@ public class GUIController : MonoBehaviour
 {
 	public PlayerController playerC;
 
+	public Behavior_ChangesControlDirections changeDir;
 	public Transform playerTransform,mainCameraTransform;
+
 
 	private void Awake()
 	{
@@ -15,7 +17,22 @@ public class GUIController : MonoBehaviour
 	{
 		ButtonClickActions();
 
+
 		mainCameraTransform.position = new Vector3(playerTransform.position.x,mainCameraTransform.position.y,playerTransform.position.z - 10);
+		if(Input.GetKeyDown(KeyCode.R)){
+
+			Debug.Log("pressed R");
+			changeDir.ChangeRandomCameraAngle();
+
+		}
+
+		if(Input.GetKeyDown(KeyCode.E)){
+			
+			Debug.Log("pressed E");
+			changeDir.ChangeControlDirection();
+		}
+
+
 	}
 
 
