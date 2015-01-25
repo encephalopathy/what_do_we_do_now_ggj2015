@@ -11,6 +11,9 @@ public class GUIController : MonoBehaviour
 	private float startButtonSize_height = 60;
 	private float startButtonSize_width = 150;
 
+	private float instructionText_height = 30;
+	private float instructionText_width = 150;
+
 	private void Awake()
 	{
 		Time.timeScale = 0f;
@@ -72,6 +75,12 @@ public class GUIController : MonoBehaviour
 
 		 
 		if(_showStartButton){
+
+
+			bool _text = GUI.Button(new Rect (Screen.width/2 - instructionText_width/2, 30f, 
+			                                              instructionText_width, instructionText_height),  "The WTF Game");
+
+
 
 			if(GUI.Button(new Rect(Screen.width/2 - startButtonSize_width/2, Screen.height/2 - startButtonSize_height/2, 
 			                       startButtonSize_width, startButtonSize_height), "Start"))
