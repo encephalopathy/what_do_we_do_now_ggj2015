@@ -11,8 +11,8 @@ public class GUIController : MonoBehaviour
 	private float startButtonSize_height = 60;
 	private float startButtonSize_width = 150;
 
-	private float instructionText_height = 30;
-	private float instructionText_width = 150;
+	private float instructionText_height = 50;
+	private float instructionText_width = 250;
 
 	private void Awake()
 	{
@@ -76,9 +76,12 @@ public class GUIController : MonoBehaviour
 		 
 		if(_showStartButton){
 
+			GUIStyle customButton = new GUIStyle("button");
+			customButton.fontSize = 18;
+			
 
-			bool _text = GUI.Button(new Rect (Screen.width/2 - instructionText_width/2, 30f, 
-			                                              instructionText_width, instructionText_height),  "The WTF Game");
+			bool _text = GUI.Button(new Rect (Screen.width/2 - instructionText_width/2, 70f, 
+			                                              instructionText_width, instructionText_height),  "Follow the bread crumb....", customButton);
 
 
 
