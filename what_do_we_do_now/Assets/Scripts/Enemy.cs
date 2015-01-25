@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
 
 	void OnEnable(){
 
+		_targetPos = new Vector3(Random.Range (-50, 50), 0f, Random.Range(-50,50)) + transform.position; 
 		isStopMoving = false;
 	}
 
@@ -74,7 +75,6 @@ public class Enemy : MonoBehaviour
 		}
 
 
-
 		Vector3 _direction = _targetPos -  transform.position ;
 		_direction = new Vector3 (_direction.x, 0f, _direction.z);
 
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
 		else{
 			isStopMoving = true;
 			yield return new WaitForSeconds(Random.Range(0f, 5f));
-			_targetPos = new Vector3(Random.Range (-50, 50), 0f, Random.Range(-50,50)); 
+			_targetPos = new Vector3(Random.Range (-50, 50), 0f, Random.Range(-50,50)) + transform.position; 
 			isStopMoving = false;
 		}
 

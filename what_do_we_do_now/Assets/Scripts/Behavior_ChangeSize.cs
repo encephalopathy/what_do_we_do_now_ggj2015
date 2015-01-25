@@ -9,15 +9,28 @@ public class Behavior_ChangeSize : EnemyBehavior {
 
 	public SizeType sizeType;
 
+	void Update(){
+
+		CheckProximityAndAdjustSize();
+	}
+
 	void OnEnable(){
 
 		RandomizePlayerSize();
 	}
 
-	void OnTriggerEnter(Collider other){
-		
-		if(other.tag == "Player"){
-			
+//	void OnTriggerEnter(Collider other){
+//		
+//		if(other.tag == "Player"){
+//			
+//			ChangePlayerSize();
+//		}
+//	}
+
+	public void CheckProximityAndAdjustSize(){
+
+		if((myTransform.position - playerTransform.position).magnitude < 8f){
+
 			ChangePlayerSize();
 		}
 	}
@@ -32,18 +45,19 @@ public class Behavior_ChangeSize : EnemyBehavior {
 	public void ChangePlayerSize(){
 
 		if(sizeType == SizeType.big){
-
-			playerTransform.localScale = new Vector3(2f,2f,2f);
+			if(playerTransform.localScale.x <=3f)
+				playerTransform.localScale = Vector3.Lerp(playerTransform.localScale, new Vector3 (3f,3f,3f), Time.deltaTime);
 		}
 
 		else if(sizeType == SizeType.normal){
-			
-			playerTransform.localScale = new Vector3 (1f,1f,1f);
+
+			if(playerTransform.localScale.x != 1f)
+				playerTransform.localScale = Vector3.Lerp(playerTransform.localScale, new Vector3 (1f,1f,1f), Time.deltaTime);
 		}
 
 		else if(sizeType == SizeType.small){
-			
-			playerTransform.localScale = new Vector3 (0.5f,0.5f,0.5f);
+			if(playerTransform.localScale.x >=0.5f)
+				playerTransform.localScale = Vector3.Lerp(playerTransform.localScale, new Vector3 (0.5f,0.5f,0.5f), Time.deltaTime);
 		}
 	}
 
