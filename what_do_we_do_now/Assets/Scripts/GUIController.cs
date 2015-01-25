@@ -11,7 +11,7 @@ public class GUIController : MonoBehaviour
 	private float startButtonSize_height = 60;
 	private float startButtonSize_width = 150;
 
-	private float instructionText_height = 100;
+	private float instructionText_height = 30;
 	private float instructionText_width = 150;
 
 	private void Awake()
@@ -77,9 +77,10 @@ public class GUIController : MonoBehaviour
 		if(_showStartButton){
 
 
-//			GUI.TextArea(new Rect (Screen.width/2 - instructionText_width/2, Screen.height/2 - instructionText_height/2), 
-//			             instructionText_width, instructionText_height, "The WTF Game");
-//			
+			string _stringToEdit = GUI.TextArea(new Rect (Screen.width/2 - instructionText_width/2, 30f, 
+			                                              instructionText_width, instructionText_height),  "The WTF Game", 200);
+
+
 
 			if(GUI.Button(new Rect(Screen.width/2 - startButtonSize_width/2, Screen.height/2 - startButtonSize_height/2, 
 			                       startButtonSize_width, startButtonSize_height), "Start"))

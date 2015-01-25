@@ -26,7 +26,8 @@ public class Behavior_KnockBack : EnemyBehavior {
 
 		while(_curTimer <= _timerLength){
 			_curTimer+= Time.deltaTime;
-			playerTransform.Translate(_direction * knockBackForce * (_timerLength - _curTimer));
+			//Debug.Log (_direction * knockBackForce * (_timerLength - _curTimer));
+			playerTransform.position += _direction * knockBackForce * (_timerLength - _curTimer);
 			
 			yield return new WaitForFixedUpdate();
 		}
