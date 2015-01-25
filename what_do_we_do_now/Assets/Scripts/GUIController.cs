@@ -77,8 +77,8 @@ public class GUIController : MonoBehaviour
 		if(_showStartButton){
 
 
-			string _stringToEdit = GUI.TextArea(new Rect (Screen.width/2 - instructionText_width/2, 30f, 
-			                                              instructionText_width, instructionText_height),  "The WTF Game", 200);
+			bool _text = GUI.Button(new Rect (Screen.width/2 - instructionText_width/2, 30f, 
+			                                              instructionText_width, instructionText_height),  "The WTF Game");
 
 
 
