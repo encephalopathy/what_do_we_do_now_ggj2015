@@ -18,4 +18,11 @@ public abstract class EnemyBehavior : MonoBehaviour
 	{
 		
 	}
+
+	public void Update(){
+
+
+	}
+
+
 }

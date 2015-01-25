@@ -29,7 +29,7 @@ public class GUIController : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.E)){
 			
 			Debug.Log("pressed E");
-			changeDir.ChangeControlDirection();
+			//playerC.gameObject.AddComponent<Behavior_Teleport>();
 		}
 
 
