@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 	public Transform Ground;
 	public float directionModifer = 1f,speed = 6f;
 	public bool isKnockedBack = false;
-	[System.NonSerialized] public bool bInvisible;
+	//[System.NonSerialized] public bool bInvisible;
 
 	private Vector3 _rotation = Vector3.zero;
 
@@ -32,13 +32,13 @@ public class PlayerController : MonoBehaviour
 		transform.position +=  _targetPos;
 	}
 
-	public void ToggleInvisible()
-	{
-		bInvisible = !bInvisible;
-
-		if(bInvisible)
-			renderer.material.color = Color.black;
-		else
-			renderer.material.color = Color.white;
-	}
+//	public void ToggleInvisible()
+//	{
+//		bInvisible = !bInvisible;
+//
+//		if(bInvisible)
+//			renderer.material.color = Color.black;
+//		else
+//			renderer.material.color = Color.white;
+//	}
 }

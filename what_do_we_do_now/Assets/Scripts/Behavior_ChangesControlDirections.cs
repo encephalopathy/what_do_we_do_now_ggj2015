@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum DirectionalType { normal, reverseAll, changeCameraAngle, }
+public enum DirectionalType { normal, reverseAll, changeCameraAngle }
 
 public class Behavior_ChangesControlDirections : EnemyBehavior {
 
@@ -33,14 +33,10 @@ public class Behavior_ChangesControlDirections : EnemyBehavior {
 		if(player == null) return;
 
 
-		if(directionType == DirectionalType.normal)
+		if(player.directionModifer == -1f)
 			player.directionModifer = 1f;
-
-		else if(directionType == DirectionalType.reverseAll)
+		else if(player.directionModifer == 1f)
 			player.directionModifer = -1f;
-
-
-
 	}
 
 	public void RandomizeDirectionType(){
@@ -58,7 +54,7 @@ public class Behavior_ChangesControlDirections : EnemyBehavior {
 			+ player.transform.position + new Vector3 (0, original_playerDistanceFromCamera_Height, 0);
 
 		Camera.main.transform.position = _targetPos;
-		Camera.main.transform.LookAt(player.transform.position);
+		Camera.main.transform.LookAt(playerTransform.position);
 
 	}
 
@@ -75,8 +71,6 @@ public class Behavior_ChangesControlDirections : EnemyBehavior {
 	void OnTriggerEnter (Collider other){
 
 		if(other.tag == "Player"){
-
-			Debug.Log ("touched directional changing enemy");
 
 			if(directionType == DirectionalType.normal){
 				RevertBackToNormalCameraAngle();

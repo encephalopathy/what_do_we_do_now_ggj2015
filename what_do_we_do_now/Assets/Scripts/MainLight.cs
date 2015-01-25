@@ -29,7 +29,7 @@ public class MainLight : MonoBehaviour
 		Ground.renderer.material.shader = diffuseShader;
 		if(bDim)
 		{
-			myLight.intensity -= 0.003f;
+			myLight.intensity -= 0.006f;
 		}
 		else
 		{

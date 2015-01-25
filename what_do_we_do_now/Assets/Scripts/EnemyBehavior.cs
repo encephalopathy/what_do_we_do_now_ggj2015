@@ -7,6 +7,8 @@ public abstract class EnemyBehavior : MonoBehaviour
 
 	protected Transform myTransform,playerTransform;
 
+	public BodyPart bodypart;
+
 	protected virtual void Awake()
 	{
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -21,6 +23,11 @@ public abstract class EnemyBehavior : MonoBehaviour
 
 	public void Update(){
 
+
+	}
+
+	public virtual void Initialize()
+	{
 
 	}
 
