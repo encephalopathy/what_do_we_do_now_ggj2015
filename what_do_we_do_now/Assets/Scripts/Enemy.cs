@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 
 	private bool isStopMoving;
 
+	public Material greenMat;
+
 	void Awake(){
 
 		playerC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -25,7 +27,6 @@ public class Enemy : MonoBehaviour
 
 		hardPoints.Add(transform.position);
 		hardPoints.Add(new Vector3(transform.position.x,transform.position.y + spreadAmount,transform.position.z));
-		hardPoints.Add(new Vector3(transform.position.x,transform.position.y + spreadAmount * 2,transform.position.z));
 
 		GenerateBodyParts();
 	}
@@ -49,19 +50,21 @@ public class Enemy : MonoBehaviour
 		if(Random.Range(0,1f) < 0.5f)
 			bodyPartAmount = 2;
 
-		if(Random.Range(0,1f) < 0.3f)
-			bodyPartAmount = 3;
-
 		for(int i=0; i<bodyPartAmount; i++)
 		{
 			BodyPart chosenBodyPart = enemyCon.bodyParts[Random.Range(0,enemyCon.bodyParts.Count)],
 			newBodyPart = Instantiate(chosenBodyPart,hardPoints[i],chosenBodyPart.transform.rotation) as BodyPart;
+			EnemyBehavior newEnemyBehavior = null;
 
 			newBodyPart.transform.parent = transform;
 
 			newBodyPart.gameObject.SetActive(true);
 
 			gameObject.AddComponent(newBodyPart.enemyBehaviorName);
+
+			newEnemyBehavior = GetComponent<EnemyBehavior>();
+
+			newEnemyBehavior.bodypart = newBodyPart;
 		}
 	}
 
@@ -69,8 +72,8 @@ public class Enemy : MonoBehaviour
 
 		if(isStopMoving) yield break;
 
-		if(this.gameObject.GetComponent<Behavior_FollowChase>() != null) {
-			Debug.Log("not running movetopos");
+		if(this.gameObject.GetComponent<Behavior_FollowChase>() != null)
+		{
 			yield break;
 		}
 
@@ -78,9 +81,9 @@ public class Enemy : MonoBehaviour
 		Vector3 _direction = _targetPos -  transform.position ;
 		_direction = new Vector3 (_direction.x, 0f, _direction.z);
 
-		if(_direction.magnitude >=2f){
+		if(_direction.magnitude >= 2f){
 
-			transform.Translate(_direction.normalized * speed *Time.deltaTime );
+			transform.Translate(_direction.normalized * speed * Time.deltaTime );
 
 		}
 

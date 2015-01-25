@@ -16,11 +16,11 @@ public class MainLight : MonoBehaviour
 	{
 		if(bDim)
 		{
-			myLight.intensity -= 0.003f;
+			myLight.intensity -= 0.006f;
 		}
 		else
 		{
-			myLight.intensity += 0.003f;
+			myLight.intensity += 0.006f;
 		}
 	}
 }

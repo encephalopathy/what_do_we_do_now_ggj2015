@@ -10,11 +10,11 @@ public class Behavior_Invisible : EnemyBehavior
 		base.Start();
 	}
 
-	private void OnTriggerEnter(Collider collider)
-	{
-		if(collider.transform == playerTransform)
-		{
-			player.ToggleInvisible();
-		}
-	}
+//	private void OnTriggerEnter(Collider collider)
+//	{
+//		if(collider.transform == playerTransform)
+//		{
+//			player.ToggleInvisible();
+//		}
+//	}
 }

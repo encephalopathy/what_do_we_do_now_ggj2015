@@ -16,14 +16,14 @@ public class Behavior_DimBrighten : EnemyBehavior
 		mainLight = GameObject.Find("MainLight").GetComponent<MainLight>();
 
 		if(Random.Range(0,2) == 0)
+		{
 			bDim = true;
+		}
 	}
 
 	protected override void Start()
 	{
 		base.Start();
-
-
 	}
 
 	private void Update()
