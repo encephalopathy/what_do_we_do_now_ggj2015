@@ -30,6 +30,8 @@ public class GUIController : MonoBehaviour
 
 
 		mainCameraTransform.position = new Vector3(playerTransform.position.x,mainCameraTransform.position.y,playerTransform.position.z - 10);
+		mainCameraTransform.LookAt(playerTransform.position);
+		
 		if(Input.GetKeyDown(KeyCode.R)){
 
 			Debug.Log("pressed R");
