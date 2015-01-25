@@ -10,11 +10,13 @@ public class Enemy : MonoBehaviour
 
 	private void Start()
 	{
-		int spreadAmount = 5;
+		float spreadAmount = 1.5f;
 
 		hardPoints.Add(transform.position);
 		hardPoints.Add(new Vector3(transform.position.x,transform.position.y + spreadAmount,transform.position.z));
 		hardPoints.Add(new Vector3(transform.position.x,transform.position.y + spreadAmount * 2,transform.position.z));
+
+		GenerateBodyParts();
 	}
 
 	private void Update()
@@ -24,16 +26,24 @@ public class Enemy : MonoBehaviour
 
 	public void GenerateBodyParts()
 	{
-		int bodyPartAmount = 2;
+		int bodyPartAmount = 1;
 
-		if(Random.Range(0,1f) < 0.35f)
+		if(Random.Range(0,1f) < 0.5f)
+			bodyPartAmount = 2;
+
+		if(Random.Range(0,1f) < 0.3f)
 			bodyPartAmount = 3;
 
 		for(int i=0; i<bodyPartAmount; i++)
 		{
-			GameObject newBodyPart = enemyCon.bodyParts[Random.Range(0,enemyCon.bodyParts.Count)];
+			BodyPart chosenBodyPart = enemyCon.bodyParts[Random.Range(0,enemyCon.bodyParts.Count)],
+			newBodyPart = Instantiate(chosenBodyPart,hardPoints[i],chosenBodyPart.transform.rotation) as BodyPart;
 
-			Instantiate(newBodyPart,hardPoints[bodyPartAmount],newBodyPart.transform.rotation);
+			newBodyPart.transform.parent = transform;
+
+			newBodyPart.gameObject.SetActive(true);
+
+			gameObject.AddComponent(newBodyPart.enemyBehaviorName);
 		}
 	}
 }

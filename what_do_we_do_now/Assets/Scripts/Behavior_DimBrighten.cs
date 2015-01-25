@@ -3,12 +3,18 @@ using System.Collections;
 
 public class Behavior_DimBrighten : EnemyBehavior
 {
-	public MainLight mainLight;
+	private MainLight mainLight;
 
-	public enum lightChangeTypes {dim,brighten};
-	public lightChangeTypes lightChangeType;
+	public bool bDim;
 
 	public float lightChangeSpeed = 0.1f;
+
+	protected override void Awake ()
+	{
+		base.Awake();
+
+		mainLight = GameObject.Find("MainLight").GetComponent<MainLight>();
+	}
 
 	protected override void Start()
 	{
@@ -21,7 +27,7 @@ public class Behavior_DimBrighten : EnemyBehavior
 	{
 		if(Vector3.Distance(myTransform.position,playerTransform.position) < 5)
 		{
-			mainLight.ChangeLighting(lightChangeType);
+			mainLight.ChangeLighting(bDim);
 		}
 	}
 }
