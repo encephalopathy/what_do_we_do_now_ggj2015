@@ -12,9 +12,9 @@ public class MainLight : MonoBehaviour
 		originalIntensity = myLight.intensity;
 	}
 
-	public void ChangeLighting(Behavior_DimBrighten.lightChangeTypes lightingChange)
+	public void ChangeLighting(bool bDim)
 	{
-		if(lightingChange == Behavior_DimBrighten.lightChangeTypes.dim)
+		if(bDim)
 		{
 			myLight.intensity -= 0.003f;
 		}
