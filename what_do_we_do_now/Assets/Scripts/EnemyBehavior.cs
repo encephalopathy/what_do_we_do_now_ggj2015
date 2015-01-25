@@ -20,16 +20,4 @@ public abstract class EnemyBehavior : MonoBehaviour
 	{
 		
 	}
-
-	public void Update(){
-
-
-	}
-
-	public virtual void Initialize()
-	{
-
-	}
-
-
 }

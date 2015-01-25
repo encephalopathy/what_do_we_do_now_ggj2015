@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 	private Vector3 _rotation = Vector3.zero;
 	private Vector3 _lastDirection;
 
+	public Portal portal1,portal2;
+
 	private void Start()
 	{
 
