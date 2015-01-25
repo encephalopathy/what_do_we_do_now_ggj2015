@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
 		Vector3 _targetPos = _direction * directionModifer * speed * Time.deltaTime;
 		
-		Ground.Translate(_targetPos);
+		Ground.position = new Vector3(transform.position.x,Ground.position.y,transform.position.z);
 		_rotation =_direction;
 		transform.position +=  _targetPos;
 	}
