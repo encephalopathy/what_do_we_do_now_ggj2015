@@ -31,7 +31,7 @@ public class Behavior_KnockBack : EnemyBehavior {
 			yield return new WaitForFixedUpdate();
 		}
 
-
+		player.isKnockedBack= false;
 
 	}
 

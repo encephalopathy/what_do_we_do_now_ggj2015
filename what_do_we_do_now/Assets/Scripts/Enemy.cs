@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour
 	public void CheckIfEnemyIsFarFromPlayer (){
 
 		if(playerC == null) return;
-		if(Vector3.Distance (transform.position, playerC.transform.position) > 25f){ 
+		if(Vector3.Distance (transform.position, playerC.transform.position) > 100f){ 
 
 			Destroy(this.gameObject);
 		}
