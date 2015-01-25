@@ -46,18 +46,18 @@ public class Behavior_ChangeSize : EnemyBehavior {
 
 		if(sizeType == SizeType.big){
 			if(playerTransform.localScale.x <=3f)
-				playerTransform.localScale *= 1.02f;
+				playerTransform.localScale = Vector3.Lerp(playerTransform.localScale, new Vector3 (3f,3f,3f), Time.deltaTime);
 		}
 
 		else if(sizeType == SizeType.normal){
 
 			if(playerTransform.localScale.x != 1f)
-			playerTransform.localScale = new Vector3 (1f,1f,1f);
+				playerTransform.localScale = Vector3.Lerp(playerTransform.localScale, new Vector3 (1f,1f,1f), Time.deltaTime);
 		}
 
 		else if(sizeType == SizeType.small){
 			if(playerTransform.localScale.x >=0.5f)
-				playerTransform.localScale *= 0.98f;
+				playerTransform.localScale = Vector3.Lerp(playerTransform.localScale, new Vector3 (0.5f,0.5f,0.5f), Time.deltaTime);
 		}
 	}
 
