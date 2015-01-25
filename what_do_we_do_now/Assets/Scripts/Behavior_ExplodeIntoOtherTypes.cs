@@ -15,13 +15,13 @@ public class Behavior_ExplodeIntoOtherTypes : EnemyBehavior {
 
 	public void ExplodeIntoOtherTypes(int numOfTypes){
 
-		for (int i = 0; i < numberOfSplits; i++) {
-
-			GameController.c.CreateRandomEnemyAtPos(myTransform.position + new Vector3(Random.Range(0,5f), 0, Random.Range(0,5f)));
-
-
-		}
-
-		Destroy (this.gameObject);
+//		for (int i = 0; i < numberOfSplits; i++) {
+//
+// 			GameController.c.CreateRandomEnemyAtPos(myTransform.position + new Vector3(Random.Range(0,5f), 0, Random.Range(0,5f)));
+//
+//
+//		}
+//
+//		Destroy (gameObject);
 	}
 }

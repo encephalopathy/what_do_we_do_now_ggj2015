@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour
 {
+	public PlayerController player;
+	public Enemy originalEnemy;
+
 	public List<BodyPart> bodyParts = new List<BodyPart>();
 	public List<string> enemyBehaviorNames = new List<string>();
 
@@ -18,7 +21,20 @@ public class EnemyController : MonoBehaviour
 
 			enemyBehaviorNames.Remove(enemyBehaviorNames[randomEnemyBehaviorNameIndex]);
 		}
+
+		for(int i=0; i<5; i++)
+		{
+			SpawnEnemy();
+		}
 	}
 
+	public void SpawnEnemy()
+	{
+		Vector3 _targetPos = Quaternion.AngleAxis(Random.Range(0,360), Vector3.up) * Vector3.forward * 50f + player.transform.position;
+		Enemy spawnedEnemy = GameObject.Instantiate(originalEnemy,
+		                                            _targetPos,
+		originalEnemy.transform.rotation) as Enemy;
 
+		spawnedEnemy.gameObject.SetActive(true);
+	}
 }

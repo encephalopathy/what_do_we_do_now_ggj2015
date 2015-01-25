@@ -11,6 +11,11 @@ public class Behavior_FollowChase : EnemyBehavior
 	protected override void Start()
 	{
 		base.Start();
+
+		if(Random.Range(0,2) == 0)
+		{
+			bChase = true;
+		}
 	}
 
 	private void Update()
