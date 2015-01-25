@@ -31,8 +31,6 @@ public class Behavior_FollowChase : EnemyBehavior
 
 	public void FollowTarget(Transform target)
 	{
-		Debug.Log ("I am following");
-
 		if(Vector3.Distance(target.position,myTransform.position) >= 5f)
 		{
 			Vector3 followPosition = Vector3.MoveTowards(myTransform.position,target.position,Time.deltaTime * speed);
@@ -43,8 +41,6 @@ public class Behavior_FollowChase : EnemyBehavior
 
 	public void ChaseTarget(Transform target)
 	{
-
-		Debug.Log ("I am chasing");
 		Vector3 followPosition = Vector3.MoveTowards(myTransform.position,target.position,Time.deltaTime * speed);
 		
 		myTransform.position = new Vector3(followPosition.x,myTransform.position.y,followPosition.z);

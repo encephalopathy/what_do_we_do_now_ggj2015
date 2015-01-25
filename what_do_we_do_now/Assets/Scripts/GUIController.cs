@@ -14,9 +14,13 @@ public class GUIController : MonoBehaviour
 	private float instructionText_height = 50;
 	private float instructionText_width = 250;
 
+	public GameObject UIBeginningScene;
+	public TweenPosition _tweenPos;
+	public TweenScale UIStartButton;
+
 	private void Awake()
 	{
-		Time.timeScale = 0f;
+		//Time.timeScale = 0f;
 
 	}
 
@@ -67,37 +71,63 @@ public class GUIController : MonoBehaviour
 		playerC.MoveToLocation(_direction);
 	}
 
-	bool _showStartButton = true;
+	public void StartGame(){
 
-	void OnGUI() {
-
-
-
-		 
-		if(_showStartButton){
-
-			GUIStyle customButton = new GUIStyle("button");
-			customButton.fontSize = 18;
-			
-
-			bool _text = GUI.Button(new Rect (Screen.width/2 - instructionText_width/2, 70f, 
-			                                              instructionText_width, instructionText_height),  "Follow the bread crumb....", customButton);
+		Time.timeScale = 1;
 
 
+		//TweenPosition _tweenPos = GameObject.Find("Instructions").GetComponent<TweenPosition>();
+		_tweenPos.from = new Vector3 (0,150,0);
+		_tweenPos.to = new Vector3 (800, 150,0);
+		_tweenPos.enabled =true;
+		_tweenPos.ResetToBeginning();
 
-			if(GUI.Button(new Rect(Screen.width/2 - startButtonSize_width/2, Screen.height/2 - startButtonSize_height/2, 
-			                       startButtonSize_width, startButtonSize_height), "Start"))
-			{
-
-				Time.timeScale = 1f;
-				_showStartButton = false;
-				
-			}
-
-		}
+		StartCoroutine(FadeOpeningScene());
+		UIStartButton.enabled = true;
 
 
-		
 	}
+
+	public IEnumerator FadeOpeningScene(){
+
+		yield return new WaitForSeconds(1f);
+		UIBeginningScene.SetActive(false);
+	}
+
+
+	//bool _showStartButton = true;
+
+
+
+//	void OnGUI() {
+//
+//
+//
+//		 
+//		if(_showStartButton){
+//
+//			GUIStyle customButton = new GUIStyle("button");
+//			customButton.fontSize = 18;
+//			
+//
+//			bool _text = GUI.Button(new Rect (Screen.width/2 - instructionText_width/2, 70f, 
+//			                                              instructionText_width, instructionText_height),  "Follow the bread crumb....", customButton);
+//
+//
+//
+//			if(GUI.Button(new Rect(Screen.width/2 - startButtonSize_width/2, Screen.height/2 - startButtonSize_height/2, 
+//			                       startButtonSize_width, startButtonSize_height), "Start"))
+//			{
+//
+//				Time.timeScale = 1f;
+//				_showStartButton = false;
+//				
+//			}
+//
+//		}
+//
+//
+//		
+//	}
 
 }

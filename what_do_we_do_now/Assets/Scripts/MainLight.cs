@@ -5,10 +5,8 @@ public class MainLight : MonoBehaviour
 {
 	public Light myLight;
 
-	private Shader diffuseShader;
-	private Shader refractionShader;
-
 	public GameObject Ground;
+	public GameObject diffuseGround;
 
 	private bool bDimLast = false;
 
@@ -17,23 +15,30 @@ public class MainLight : MonoBehaviour
 	private void Start()
 	{
 		originalIntensity = myLight.intensity;
-		diffuseShader = Shader.Find("Diffuse");
-		refractionShader = Shader.Find("FX/Glass/Stained BumpDistort");
-	}
 
-	void Update() {
+		ModifyDiffuseGroundTransparency();
 	}
 
 	public void ChangeLighting(bool bDim)
 	{
-		Ground.renderer.material.shader = diffuseShader;
 		if(bDim)
 		{
-			myLight.intensity -= 0.006f;
+			myLight.intensity -= 0.005f;
 		}
-		else
+		else if(myLight.intensity < 1f)
 		{
-			myLight.intensity += 0.05f;
+			myLight.intensity += 0.005f;
 		}
+
+		ModifyDiffuseGroundTransparency();
+	}
+
+	private void ModifyDiffuseGroundTransparency()
+	{
+		Color diffuseGroundColor = diffuseGround.renderer.material.color;
+		float lightIntensityCompare = Mathf.Abs(myLight.intensity - originalIntensity);
+
+		diffuseGround.renderer.material.color =
+		new Color(diffuseGroundColor.r,diffuseGroundColor.g,diffuseGroundColor.b,lightIntensityCompare + Mathf.Lerp(0,0.5f,lightIntensityCompare/0.5f));
 	}
 }
