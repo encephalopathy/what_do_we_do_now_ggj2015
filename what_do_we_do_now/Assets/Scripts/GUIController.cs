@@ -20,7 +20,7 @@ public class GUIController : MonoBehaviour
 
 	private void Awake()
 	{
-		//Time.timeScale = 0f;
+		Time.timeScale = 0f;
 
 	}
 
@@ -78,7 +78,7 @@ public class GUIController : MonoBehaviour
 
 		//TweenPosition _tweenPos = GameObject.Find("Instructions").GetComponent<TweenPosition>();
 		_tweenPos.from = new Vector3 (0,150,0);
-		_tweenPos.to = new Vector3 (800, 150,0);
+		_tweenPos.to = new Vector3 (800, 120,0);
 		_tweenPos.enabled =true;
 		_tweenPos.ResetToBeginning();
 
