@@ -13,11 +13,11 @@ public class Enemy : MonoBehaviour
 	public float speed = 6f;
 
 	private bool isStopMoving;
+	private MainLight mainLight;
 
 	public Material greenMat;
 
 	void Awake(){
-
 		playerC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 	}
 

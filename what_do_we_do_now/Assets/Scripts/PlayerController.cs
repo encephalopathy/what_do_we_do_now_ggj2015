@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	//[System.NonSerialized] public bool bInvisible;
 
 	private Vector3 _rotation = Vector3.zero;
+	private Vector3 _lastDirection;
 
 	private void Start()
 	{
@@ -28,6 +29,12 @@ public class PlayerController : MonoBehaviour
 
 		Vector3 _targetPos = _direction * directionModifer * speed * Time.deltaTime;
 		
+		if (_lastDirection != _direction) {
+		Color randomColor = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f));
+		//Debug.Log("Random Color: " + randomColor);
+		gameObject.renderer.material.SetColor("_LineColor", randomColor);
+		}
+		_lastDirection = _direction;
 		_rotation =_direction;
 		transform.position +=  _targetPos;
 	}
