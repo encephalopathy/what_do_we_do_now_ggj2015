@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
 			enemyBehaviorNames.Remove(enemyBehaviorNames[randomEnemyBehaviorNameIndex]);
 		}
 
-		for(int i=0; i<5; i++)
+		for(int i=0; i<10; i++)
 		{
 			SpawnEnemy();
 		}
@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
 
 	public void SpawnEnemy()
 	{
-		Vector3 _targetPos = Quaternion.AngleAxis(Random.Range(0,360), Vector3.up) * Vector3.forward * 50f + player.transform.position;
+		Vector3 _targetPos = Quaternion.AngleAxis(Random.Range(0,360), Vector3.up) * Vector3.forward * 30f + player.transform.position;
 		Enemy spawnedEnemy = GameObject.Instantiate(originalEnemy,
 		                                            _targetPos,
 		originalEnemy.transform.rotation) as Enemy;

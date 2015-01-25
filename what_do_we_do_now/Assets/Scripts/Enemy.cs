@@ -98,6 +98,8 @@ public class Enemy : MonoBehaviour
 		if(playerC == null) return;
 		if(Vector3.Distance (transform.position, playerC.transform.position) > 100f){ 
 
+			enemyCon.SpawnEnemy();
+
 			Destroy(this.gameObject);
 		}
 

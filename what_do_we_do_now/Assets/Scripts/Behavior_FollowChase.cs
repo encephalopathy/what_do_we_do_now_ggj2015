@@ -20,7 +20,7 @@ public class Behavior_FollowChase : EnemyBehavior
 
 	private void Update()
 	{
-		if(!player.bInvisible && Vector3.Distance(myTransform.position,playerTransform.position) < 10f)
+		if(Vector3.Distance(myTransform.position,playerTransform.position) < 10f)
 		{
 			if(!bChase)
 				FollowTarget(playerTransform);
