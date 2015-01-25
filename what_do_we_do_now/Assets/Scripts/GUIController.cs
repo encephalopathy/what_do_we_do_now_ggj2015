@@ -22,6 +22,7 @@ public class GUIController : MonoBehaviour
 	{
 		Time.timeScale = 0f;
 
+		Application.targetFrameRate = 60;
 	}
 
 	private void Update()
@@ -30,19 +31,7 @@ public class GUIController : MonoBehaviour
 
 
 		mainCameraTransform.position = new Vector3(playerTransform.position.x,mainCameraTransform.position.y,playerTransform.position.z - 10);
-		if(Input.GetKeyDown(KeyCode.R)){
-
-			Debug.Log("pressed R");
-			changeDir.ChangeRandomCameraAngle();
-
-		}
-
-		if(Input.GetKeyDown(KeyCode.E)){
-			
-			Debug.Log("pressed E");
-			//playerC.gameObject.AddComponent<Behavior_Teleport>();
-		}
-
+		mainCameraTransform.LookAt(playerTransform.position);
 
 	}
 
