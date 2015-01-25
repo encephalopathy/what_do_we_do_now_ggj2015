@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
 		if(isStopMoving) yield break;
 
 		if(this.gameObject.GetComponent<Behavior_FollowChase>() != null) {
-			Debug.Log("not running movetopos");
+			//Debug.Log("not running movetopos");
 			yield break;
 		}
 

@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		gameObject.transform.Rotate(_rotation);
+		gameObject.transform.Rotate(_rotation * speed);
 
 		Ground.position = new Vector3(transform.position.x,Ground.position.y,transform.position.z);
 	}

@@ -9,10 +9,11 @@ public class Behavior_DimBrighten : EnemyBehavior
 
 	public float lightChangeSpeed = 0.1f;
 
+
+
 	protected override void Awake ()
 	{
 		base.Awake();
-
 		mainLight = GameObject.Find("MainLight").GetComponent<MainLight>();
 
 		if(Random.Range(0,2) == 0)
@@ -22,8 +23,6 @@ public class Behavior_DimBrighten : EnemyBehavior
 	protected override void Start()
 	{
 		base.Start();
-
-
 	}
 
 	private void Update()
