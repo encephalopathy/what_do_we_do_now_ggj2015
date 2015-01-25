@@ -22,6 +22,7 @@ public class GUIController : MonoBehaviour
 	{
 		//Time.timeScale = 0f;
 
+		Application.targetFrameRate = 60;
 	}
 
 	private void Update()
