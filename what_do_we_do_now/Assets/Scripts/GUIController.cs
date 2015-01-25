@@ -8,9 +8,13 @@ public class GUIController : MonoBehaviour
 	public Behavior_ChangesControlDirections changeDir;
 	public Transform playerTransform,mainCameraTransform;
 
+	private float startButtonSize_height = 60;
+	private float startButtonSize_width = 150;
 
 	private void Awake()
 	{
+		Time.timeScale = 0f;
+
 	}
 
 	private void Update()
@@ -58,6 +62,30 @@ public class GUIController : MonoBehaviour
 		}
 
 		playerC.MoveToLocation(_direction);
+	}
+
+	bool _showStartButton = true;
+
+	void OnGUI() {
+
+
+
+		 
+		if(_showStartButton){
+
+			if(GUI.Button(new Rect(Screen.width/2 - startButtonSize_width/2, Screen.height/2 - startButtonSize_height/2, 
+			                       startButtonSize_width, startButtonSize_height), "Start"))
+			{
+
+				Time.timeScale = 1f;
+				_showStartButton = false;
+				
+			}
+
+		}
+
+
+		
 	}
 
 }
