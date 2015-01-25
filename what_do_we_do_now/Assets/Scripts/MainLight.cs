@@ -8,8 +8,6 @@ public class MainLight : MonoBehaviour
 	public GameObject Ground;
 	public GameObject diffuseGround;
 
-	private bool bDimLast = false;
-
 	float originalIntensity;
 
 	private void Start()
