@@ -20,7 +20,7 @@ public class GUIController : MonoBehaviour
 
 	private void Awake()
 	{
-		Time.timeScale = 0f;
+		//Time.timeScale = 0f;
 
 	}
 
